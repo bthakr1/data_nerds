@@ -31,3 +31,4 @@ train$exercise_induced_angina <- as.factor(train$exercise_induced_angina)
 
 train_1 <- dummy.data.frame(train,names = c('thal'),sep="_")
 
+
