@@ -3,7 +3,6 @@ library(curl)
 library(data.table)
 library(dummies)
 
-
 # Get Test Values using data.table
 
 test_values <- fread('https://s3.amazonaws.com/drivendata/data/54/public/test_values.csv')
