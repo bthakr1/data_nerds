@@ -31,4 +31,12 @@ train$exercise_induced_angina <- as.factor(train$exercise_induced_angina)
 
 train_1 <- dummy.data.frame(train,names = c('thal'),sep="_")
 
+# Change the data set name
+
 train <- train_1
+
+# Histogram of various variables or features
+
+# Resting Blood Pressure
+
+hist(train$resting_blood_pressure, xlab = "Resting Blood Pressure", main = 'Resting Blood Pressure', probability = TRUE, labels = TRUE)
