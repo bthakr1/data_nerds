@@ -111,3 +111,37 @@ ggplot(data = train, aes(x=train$sex)) + geom_bar()
 ggplot(data = train, aes(x=train$exercise_induced_angina)) + geom_bar() 
 + geom_text(stat = 'count', aes(label=..count..), vjust=-1) 
 + xlab("Distribution of Exercise Induce Pain where 0 : False and 1 : True")
+
+# Identifying relationship between Heart Disease and all the continous features
+# The continous features are on Y Axis
+
+# Resting Blood Pressure
+
+ggplot(data = train, aes(x=heart_disease_present,y=resting_blood_pressure)) + geom_boxplot() 
++ scale_x_discrete(name='Heart Disease Present') 
++ scale_y_continuous(name='Resting Blood Pressure') + ggtitle("Boxplot of Heart Disease Present by Resting Blood Pressure")
+
+# Maximum Heart Rate Achieved
+
+ggplot(data = train, aes(x=heart_disease_present,y=max_heart_rate_achieved)) + geom_boxplot() 
++ scale_x_discrete(name='Heart Disease Present') + scale_y_continuous(name='Maximum Heart Rate Achieved') 
++ ggtitle("Boxplot of Heart Disease Present by Max Heart Rate Achieved")
+
+# By looking at the boxplot we can see that heart rate achieved is higher when heart diseases is 0 i.e. None
+
+# Age
+
+ggplot(data = train, aes(x=heart_disease_present,y=age)) + geom_boxplot() 
++ scale_x_discrete(name='Heart Disease Present') + scale_y_continuous(name='Age') 
++ ggtitle("Boxplot of Heart Disease Present by Age")
+
+# Similar for age , with age higher the chances of heart attack is higher
+
+# Serum Cholestrol present
+
+ggplot(data = train, aes(x=heart_disease_present,y=serum_cholesterol_mg_per_dl)) + geom_boxplot() 
++ scale_x_discrete(name='Heart Disease Present') + scale_y_continuous(name='Serum Cholestrol') 
++ ggtitle("Boxplot of Heart Disease Present by Serum Cholestrol")
+
+
+
