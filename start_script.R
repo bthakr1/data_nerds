@@ -40,11 +40,13 @@ train <- train_1
 
 # Resting Blood Pressure
 
-hist(train$resting_blood_pressure, xlab = "Resting Blood Pressure", main = 'Resting Blood Pressure', probability = TRUE, labels = TRUE)
+hist(train$resting_blood_pressure, xlab = "Resting Blood Pressure", main = 'Resting Blood Pressure', 
+     probability = TRUE, labels = TRUE)
 
 # Serum Cholestrol
 
-hist(train$serum_cholesterol_mg_per_dl, xlab = "Serum Cholestrol", main = 'Serum Cholestrol', probability = TRUE, labels = TRUE)
+hist(train$serum_cholesterol_mg_per_dl, xlab = "Serum Cholestrol", main = 'Serum Cholestrol', 
+     probability = TRUE, labels = TRUE)
 
 # Age 
 
@@ -52,11 +54,13 @@ hist(train$age, xlab = "Age", main = 'Histogram of Age', probability = TRUE, lab
 
 # Max heart rate achieved
 
-hist(train$max_heart_rate_achieved, xlab = "Heart Rate", main = 'Histogram of Main Heart Achieved', probability = TRUE, labels = TRUE)
+hist(train$max_heart_rate_achieved, xlab = "Heart Rate", main = 'Histogram of Main Heart Achieved', 
+     probability = TRUE, labels = TRUE)
 
 # Old Peak Depression
 
-hist(train$oldpeak_eq_st_depression, xlab = "Old Peak Depression", main = 'Histogram of Old Peak Depression', probability = TRUE, labels = TRUE)
+hist(train$oldpeak_eq_st_depression, xlab = "Old Peak Depression", main = 'Histogram of Old Peak Depression', 
+     probability = TRUE, labels = TRUE)
 
 # Now to barplots
 # Starting with whether heart disease present or not
@@ -77,3 +81,33 @@ ggplot(data = train, aes(x=train$chest_pain_type)) + geom_bar()
 + geom_text(stat = 'count', aes(label=..count..), vjust=-1) 
 + xlab("Chest Pain Type")
 
+# Number of Major Blood Vessels
+
+ggplot(data = train, aes(x=train$num_major_vessels)) + geom_bar() 
++ geom_text(stat = 'count', aes(label=..count..), vjust=-1) 
++ xlab("Number of Major Blood Vessels")
+
+# Fasting Blood Sugar greater than 120mg/dl
+
+ggplot(data = train, aes(x=train$fasting_blood_sugar_gt_120_mg_per_dl)) + geom_bar() 
++ geom_text(stat = 'count', aes(label=..count..), vjust=-1)
++ xlab("Fasting Blood Sugar greater than 120mg/dl")
+
+# Resting EKG Result (0,1,2)
+
+ggplot(data = train, aes(x=train$resting_ekg_results)) + geom_bar() 
++ geom_text(stat = 'count', aes(label=..count..), vjust=-1) 
++ xlab("Resting electrocardiographic result")
+
+# Distribution of Sex (0: Female , 1 :Male)
+
+ggplot(data = train, aes(x=train$sex)) + geom_bar() 
++ geom_text(stat = 'count', aes(label=..count..), vjust=-1) 
++ xlab("Distribution of Sex")
+
+# Exercise Induced Pain 
+# 0 : false, 1 : True
+
+ggplot(data = train, aes(x=train$exercise_induced_angina)) + geom_bar() 
++ geom_text(stat = 'count', aes(label=..count..), vjust=-1) 
++ xlab("Distribution of Exercise Induce Pain where 0 : False and 1 : True")
