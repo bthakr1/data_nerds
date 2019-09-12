@@ -205,7 +205,31 @@ chisq.test(table(train_factors_only$heart_disease_present,train_factors_only$exe
 
 # p-value is very small and hence reject null hypothesis , there might be some relationship
 
-# Time for some anova 
-# To be used to identify if there is any relationship between factor variable and continous variable
+# Forgot to bring more variables as factors
+
+train$slope_of_peak_exercise_st_segment <- as.factor(train$slope_of_peak_exercise_st_segment)
+
+train$chest_pain_type <- as.factor(train$chest_pain_type)
+
+train$resting_ekg_results <- as.factor(train$resting_ekg_results)
+
+# Between Heart Disease and Slope of Peak Exercise Segment
+
+chisq.test(table(train$heart_disease_present,train$slope_of_peak_exercise_st_segment),correct = F)
+
+# p-value is very small and hence reject null hypothesis , there might be some relationship
+
+# Between Heart Disease and Chest Pain Type
+
+chisq.test(table(train$heart_disease_present,train$chest_pain_type),correct = F)
+
+# p-value is very small and hence reject null hypothesis , there might be some relationship
+
+# Between Heart Disease and Resting EKG Result
+
+chisq.test(table(train$heart_disease_present,train$resting_ekg_results),correct = F)
+
+# p-value is very small and hence reject null hypothesis , there might be some relationship
+
 
 
