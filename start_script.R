@@ -3,6 +3,7 @@ library(curl)
 library(data.table)
 library(dummies)
 library(ggplot2)
+library(GGally)
 
 # Get Test Values using data.table
 
@@ -143,5 +144,68 @@ ggplot(data = train, aes(x=heart_disease_present,y=serum_cholesterol_mg_per_dl))
 + scale_x_discrete(name='Heart Disease Present') + scale_y_continuous(name='Serum Cholestrol') 
 + ggtitle("Boxplot of Heart Disease Present by Serum Cholestrol")
 
+# Getting the relationship between all the continous factors
+
+train_cont <- subset(train,select = c('resting_blood_pressure','serum_cholesterol_mg_per_dl','oldpeak_eq_st_depression',
+                                      'age','max_heart_rate_achieved'))
+
+ggpairs(train_cont)
+
+# Converting all "thal" variables to factors
+
+train$thal_fixed_defect <- as.factor(train$thal_fixed_defect)
+train$thal_normal <- as.factor(train$thal_normal)
+train$thal_reversible_defect <- as.factor(train$thal_reversible_defect)
+
+# Finding all factor variables
+
+train_factor_variables <- names(Filter(is.factor,train))
+
+# Train dataset with factors only 
+# To be used for t test later
+
+train_factors_only <- train[train_factor_variables]
+
+# Identify relationship between two factorial variables
+# Chi Square Test
+
+# Between Heart Disease and thal_fixed_defect
+
+chisq.test(table(train_factors_only$heart_disease_present,train_factors_only$thal_fixed_defect),correct = F)
+
+# p-value is 0.7463 hence we fail to reject null hypothesis and assume that relationship is by chance only
+
+# Between Heart Disease and thal_normal
+
+chisq.test(table(train_factors_only$heart_disease_present,train_factors_only$thal_normal),correct = F)
+
+# p-value is very small and hence reject null hypothesis , there might be some relationship
+
+# Between Heart Disease and thal_reversible effect
+
+chisq.test(table(train_factors_only$heart_disease_present,train_factors_only$thal_reversible_defect),correct = F)
+
+# p-value is very small and hence reject null hypothesis , there might be some relationship
+
+# Between Heart Disease and Fasting blood sugar level
+
+chisq.test(table(train_factors_only$heart_disease_present,train_factors_only$fasting_blood_sugar_gt_120_mg_per_dl),correct = F)
+
+# p-value is 0.9638 hence we fail to reject null hypothesis and assume that relationship is by chance only
+
+# Between Heart disease and Sex
+
+chisq.test(table(train_factors_only$heart_disease_present,train_factors_only$sex),correct = F)
+
+# p-value is very small and hence reject null hypothesis , there might be some relationship
+
+# Between Heart Disease and Exercise Induced Pain
+
+chisq.test(table(train_factors_only$heart_disease_present,train_factors_only$exercise_induced_angina),correct = F)
+
+# p-value is very small and hence reject null hypothesis , there might be some relationship
+
+# Time for some anova 
+# To be used to identify if there is any relationship between factor variable and continous variable
 
 
