@@ -5,6 +5,12 @@ library(dummies)
 library(ggplot2)
 library(GGally)
 
+# For Tree Model
+
+library(rpart)
+library(rpart.plot)
+
+
 # Get Test Values using data.table
 
 test_values <- fread('https://s3.amazonaws.com/drivendata/data/54/public/test_values.csv')
@@ -232,4 +238,16 @@ chisq.test(table(train$heart_disease_present,train$resting_ekg_results),correct 
 # p-value is very small and hence reject null hypothesis , there might be some relationship
 
 
+# Tree Model
 
+tree_model <- rpart(heart_disease_present ~ slope_of_peak_exercise_st_segment + thal_fixed_defect + thal_normal + thal_reversible_defect + resting_blood_pressure + chest_pain_type + num_major_vessels + fasting_blood_sugar_gt_120_mg_per_dl + resting_ekg_results + serum_cholesterol_mg_per_dl +  serum_cholesterol_mg_per_dl + oldpeak_eq_st_depression + sex + age + max_heart_rate_achieved + exercise_induced_angina, data = train, method = "class")
+
+# seems like Thal_normal is highly important based on variable importance
+
+tree_model <- rpart(heart_disease_present ~ slope_of_peak_exercise_st_segment + thal_fixed_defect + thal_reversible_defect + resting_blood_pressure + chest_pain_type + num_major_vessels + fasting_blood_sugar_gt_120_mg_per_dl + resting_ekg_results + serum_cholesterol_mg_per_dl +  serum_cholesterol_mg_per_dl + oldpeak_eq_st_depression + sex + age + max_heart_rate_achieved + exercise_induced_angina, data = train, method = "class")
+
+prp(tree_model)
+
+# Logistic Model
+
+logit_model <- glm(heart_disease_present ~ slope_of_peak_exercise_st_segment + thal_fixed_defect + thal_normal + thal_reversible_defect + resting_blood_pressure + chest_pain_type + num_major_vessels + fasting_blood_sugar_gt_120_mg_per_dl + resting_ekg_results + serum_cholesterol_mg_per_dl +  serum_cholesterol_mg_per_dl + oldpeak_eq_st_depression + sex + age + max_heart_rate_achieved + exercise_induced_angina, data = train, family = binomial(link = 'logit'))
