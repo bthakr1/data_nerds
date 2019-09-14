@@ -1,7 +1,38 @@
 This file describes the definition and purpose of different factors.
 
-1. slope_of_peak_exercise_st_segment (type: int): the slope of the peak exercise ST segment, an electrocardiography read out indicating quality of blood flow to the heart 
-2. thal (type: categorical): results of thallium stress test measuring blood flow to the heart, with possible values normal, fixed_defect, reversible_defect
+1. slope_of_peak_exercise_st_segment (type: int): the slope of the peak exercise ST segment, 
+an electrocardiography read out indicating quality of blood flow to the heart 
+
+Electrocardiography : The standard 12-lead electrocardiogram (ECG) is one of the most commonly 
+used medical studies in the assessment of cardiovascular disease. It is the most important test 
+for interpretation of the cardiac rhythm, detection of myocardial ischemia and infarction, 
+conduction system abnormalities, preexcitation, long QT syndromes, 
+atrial abnormalities, ventricular hypertrophy, pericarditis, and other conditions.
+
+The heart is a two stage electrical pump and the heart's electrical activity can be measured by 
+electrodes placed on the skin. The electrocardiogram can measure the rate and rhythm of the heartbeat, 
+as well as provide indirect evidence of blood flow to the heart muscle.
+
+This variable has 3 levels i.e. 1, 2, and 3
+
+2. thal (type: categorical): results of thallium stress test measuring blood flow to the heart, 
+with possible values normal, fixed_defect, reversible_defect
+
+Thallium Stress Test : A thallium stress test is a nuclear imaging test that shows how well blood flows 
+into your heart while you're exercising or at rest.
+
+During the procedure, a liquid with a small amount of radioactivity called a radioisotope is administered into one of 
+your veins. The radioisotope will flow through your bloodstream and end up in your heart. Once the radiation is in your 
+heart, a special camera called a gamma camera can detect the radiation and reveal any issues your heart muscle is having.
+
+We have 3 levels of Thallium Strees Test.
+
+a. Fixed Defect
+b. Normal : A normal test result indicates there is sufficient and unrestricted blood flow to your heart, 
+both during periods of rest and exercise. Generally, there’s little concern for coronary artery disease and, 
+in most cases, you won’t require any further testing.
+c. Reversible Defect
+
 3. resting_blood_pressure (type: int): resting blood pressure
 4. chest_pain_type (type: int): chest pain type (4 values)
 5. num_major_vessels (type: int): number of major vessels (0-3) colored by flourosopy
