@@ -120,16 +120,15 @@ ggplot(data = train, aes(x=heart_disease_present,y=resting_blood_pressure)) + ge
 # Maximum Heart Rate Achieved
 
 ggplot(data = train, aes(x=heart_disease_present,y=max_heart_rate_achieved)) + geom_boxplot() + 
-  scale_x_discrete(name='Heart Disease Present') + scale_y_continuous(name='Maximum Heart Rate Achieved') + 
-  ggtitle("Boxplot of Heart Disease Present by Max Heart Rate Achieved")
+  scale_x_discrete(name='Heart Disease Present') + 
+  scale_y_continuous(name='Maximum Heart Rate Achieved') + ggtitle("Boxplot of Heart Disease Present by Max Heart Rate Achieved")
 
 # By looking at the boxplot we can see that heart rate achieved is higher when heart diseases is 0 i.e. None
 
 # Age
 
 ggplot(data = train, aes(x=heart_disease_present,y=age)) + geom_boxplot() + 
-  scale_x_discrete(name='Heart Disease Present') + scale_y_continuous(name='Age') + 
-  ggtitle("Boxplot of Heart Disease Present by Age")
+  scale_x_discrete(name='Heart Disease Present') + scale_y_continuous(name='Age') + ggtitle("Boxplot of Heart Disease Present by Age")
 
 # Similar for age , with age higher the chances of heart attack is higher
 
@@ -253,5 +252,5 @@ train_2 <- merge(train,train_values_1,by = 'patient_id')
 
 train <- train_2
 
-
+# start scripting again
 
