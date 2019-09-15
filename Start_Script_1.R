@@ -47,13 +47,11 @@ train <- train_1
 
 # Resting Blood Pressure
 
-hist(train$resting_blood_pressure, xlab = "Resting Blood Pressure", main = 'Resting Blood Pressure', 
-     probability = TRUE, labels = TRUE)
+hist(train$resting_blood_pressure, xlab = "Resting Blood Pressure", main = 'Resting Blood Pressure', probability = TRUE, labels = TRUE)
 
 # Serum Cholestrol
 
-hist(train$serum_cholesterol_mg_per_dl, xlab = "Serum Cholestrol", main = 'Serum Cholestrol', 
-     probability = TRUE, labels = TRUE)
+hist(train$serum_cholesterol_mg_per_dl, xlab = "Serum Cholestrol", main = 'Serum Cholestrol', probability = TRUE, labels = TRUE)
 
 # Age 
 
@@ -61,94 +59,85 @@ hist(train$age, xlab = "Age", main = 'Histogram of Age', probability = TRUE, lab
 
 # Max heart rate achieved
 
-hist(train$max_heart_rate_achieved, xlab = "Heart Rate", main = 'Histogram of Main Heart Achieved', 
-     probability = TRUE, labels = TRUE)
+hist(train$max_heart_rate_achieved, xlab = "Heart Rate", main = 'Histogram of Main Heart Achieved',probability = TRUE, labels = TRUE)
 
 # Old Peak Depression
 
-hist(train$oldpeak_eq_st_depression, xlab = "Old Peak Depression", main = 'Histogram of Old Peak Depression', 
-     probability = TRUE, labels = TRUE)
+hist(train$oldpeak_eq_st_depression, xlab = "Old Peak Depression", main = 'Histogram of Old Peak Depression', probability = TRUE, labels = TRUE)
 
 # Now to barplots
 # Starting with whether heart disease present or not
 
-ggplot(data = train, aes(x=train$heart_disease_present)) + geom_bar() 
-+ geom_text(stat = 'count', aes(label=..count..), vjust=-1) 
-+ xlab("Heart Disease Present")
+ggplot(data = train, aes(x=train$heart_disease_present)) + geom_bar() + 
+  geom_text(stat = 'count', aes(label=..count..), vjust=-1) + xlab("Heart Disease Present")
 
 # Quality of Blood Flow to heart
 
-ggplot(data = train, aes(x=train$slope_of_peak_exercise_st_segment)) + geom_bar() 
-+ geom_text(stat = 'count', aes(label=..count..), vjust=-1) 
-+ xlab("Quality of Blood Flow to Heart")
+ggplot(data = train, aes(x=train$slope_of_peak_exercise_st_segment)) + geom_bar() + geom_text(stat = 'count', aes(label=..count..), vjust=-1) + 
+  xlab("Quality of Blood Flow to Heart")
 
 # Chest Pain Type
 
-ggplot(data = train, aes(x=train$chest_pain_type)) + geom_bar() 
-+ geom_text(stat = 'count', aes(label=..count..), vjust=-1) 
-+ xlab("Chest Pain Type")
+ggplot(data = train, aes(x=train$chest_pain_type)) + geom_bar() + geom_text(stat = 'count', aes(label=..count..), vjust=-1) + xlab("Chest Pain Type")
 
 # Number of Major Blood Vessels
 
-ggplot(data = train, aes(x=train$num_major_vessels)) + geom_bar() 
-+ geom_text(stat = 'count', aes(label=..count..), vjust=-1) 
-+ xlab("Number of Major Blood Vessels")
+ggplot(data = train, aes(x=train$num_major_vessels)) + geom_bar() + 
+  geom_text(stat = 'count', aes(label=..count..), vjust=-1) + 
+  xlab("Number of Major Blood Vessels")
 
 # Fasting Blood Sugar greater than 120mg/dl
 
-ggplot(data = train, aes(x=train$fasting_blood_sugar_gt_120_mg_per_dl)) + geom_bar() 
-+ geom_text(stat = 'count', aes(label=..count..), vjust=-1)
-+ xlab("Fasting Blood Sugar greater than 120mg/dl")
+ggplot(data = train, aes(x=train$fasting_blood_sugar_gt_120_mg_per_dl)) + geom_bar() + 
+  geom_text(stat = 'count', aes(label=..count..), vjust=-1) + 
+  xlab("Fasting Blood Sugar greater than 120mg/dl")
 
 # Resting EKG Result (0,1,2)
 
-ggplot(data = train, aes(x=train$resting_ekg_results)) + geom_bar() 
-+ geom_text(stat = 'count', aes(label=..count..), vjust=-1) 
-+ xlab("Resting electrocardiographic result")
+ggplot(data = train, aes(x=train$resting_ekg_results)) + geom_bar() + geom_text(stat = 'count', aes(label=..count..), vjust=-1) + 
+  xlab("Resting electrocardiographic result")
 
 # Distribution of Sex (0: Female , 1 :Male)
 
-ggplot(data = train, aes(x=train$sex)) + geom_bar() 
-+ geom_text(stat = 'count', aes(label=..count..), vjust=-1) 
-+ xlab("Distribution of Sex")
+ggplot(data = train, aes(x=train$sex)) + geom_bar() + geom_text(stat = 'count', aes(label=..count..), vjust=-1) + 
+  xlab("Distribution of Sex")
 
 # Exercise Induced Pain 
 # 0 : false, 1 : True
 
-ggplot(data = train, aes(x=train$exercise_induced_angina)) + geom_bar() 
-+ geom_text(stat = 'count', aes(label=..count..), vjust=-1) 
-+ xlab("Distribution of Exercise Induce Pain where 0 : False and 1 : True")
+ggplot(data = train, aes(x=train$exercise_induced_angina)) + geom_bar() + geom_text(stat = 'count', aes(label=..count..), vjust=-1) + 
+  xlab("Distribution of Exercise Induce Pain where 0 : False and 1 : True")
 
 # Identifying relationship between Heart Disease and all the continous features
 # The continous features are on Y Axis
 
 # Resting Blood Pressure
 
-ggplot(data = train, aes(x=heart_disease_present,y=resting_blood_pressure)) + geom_boxplot() 
-+ scale_x_discrete(name='Heart Disease Present') 
-+ scale_y_continuous(name='Resting Blood Pressure') + ggtitle("Boxplot of Heart Disease Present by Resting Blood Pressure")
+ggplot(data = train, aes(x=heart_disease_present,y=resting_blood_pressure)) + geom_boxplot() + 
+  scale_x_discrete(name='Heart Disease Present') + 
+  scale_y_continuous(name='Resting Blood Pressure') + ggtitle("Boxplot of Heart Disease Present by Resting Blood Pressure")
 
 # Maximum Heart Rate Achieved
 
-ggplot(data = train, aes(x=heart_disease_present,y=max_heart_rate_achieved)) + geom_boxplot() 
-+ scale_x_discrete(name='Heart Disease Present') + scale_y_continuous(name='Maximum Heart Rate Achieved') 
-+ ggtitle("Boxplot of Heart Disease Present by Max Heart Rate Achieved")
+ggplot(data = train, aes(x=heart_disease_present,y=max_heart_rate_achieved)) + geom_boxplot() + 
+  scale_x_discrete(name='Heart Disease Present') + scale_y_continuous(name='Maximum Heart Rate Achieved') + 
+  ggtitle("Boxplot of Heart Disease Present by Max Heart Rate Achieved")
 
 # By looking at the boxplot we can see that heart rate achieved is higher when heart diseases is 0 i.e. None
 
 # Age
 
-ggplot(data = train, aes(x=heart_disease_present,y=age)) + geom_boxplot() 
-+ scale_x_discrete(name='Heart Disease Present') + scale_y_continuous(name='Age') 
-+ ggtitle("Boxplot of Heart Disease Present by Age")
+ggplot(data = train, aes(x=heart_disease_present,y=age)) + geom_boxplot() + 
+  scale_x_discrete(name='Heart Disease Present') + scale_y_continuous(name='Age') + 
+  ggtitle("Boxplot of Heart Disease Present by Age")
 
 # Similar for age , with age higher the chances of heart attack is higher
 
 # Serum Cholestrol present
 
-ggplot(data = train, aes(x=heart_disease_present,y=serum_cholesterol_mg_per_dl)) + geom_boxplot() 
-+ scale_x_discrete(name='Heart Disease Present') + scale_y_continuous(name='Serum Cholestrol') 
-+ ggtitle("Boxplot of Heart Disease Present by Serum Cholestrol")
+ggplot(data = train, aes(x=heart_disease_present,y=serum_cholesterol_mg_per_dl)) + geom_boxplot() + 
+  scale_x_discrete(name='Heart Disease Present') + scale_y_continuous(name='Serum Cholestrol') + 
+  ggtitle("Boxplot of Heart Disease Present by Serum Cholestrol")
 
 # Getting the relationship between all the continous factors
 
@@ -263,9 +252,6 @@ train_2 <- merge(train,train_values_1,by = 'patient_id')
 # Renaming train_2 to train again
 
 train <- train_2
-
-# lets see if we can add the file again
-# Lets see if I can still make changes
 
 
 
