@@ -302,9 +302,13 @@ k_test$heart_disease_present <- NULL
 
 library(class)
 
-pr <- knn(k_train,k_test,cl = k_train_category,k=13)
+# K as 13 is approximate square root of 162 i.e. the number of obs in training data
+
+pr <- knn(k_train,k_test,cl = k_train_category,k=20)
 
 tab <- table(pr,k_Test_category)
+
+tab 
 
 accuracy <- function(x){sum(diag(x)/sum(rowSums(x)))*100}
 
