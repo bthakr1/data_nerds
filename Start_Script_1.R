@@ -252,5 +252,15 @@ train_2 <- merge(train,train_values_1,by = 'patient_id')
 
 train <- train_2
 
-# start scripting again
+# Converting thal to categorical. For some reason it did not come as categorical while merging
+
+train$thal <- as.factor(train$thal)
+
+# changing "thal" alpha to numeric
+
+mapping <- c("normal"=1, "fixed_defect"=2, "reversible_defect"=3)
+
+train$Thal_changed <- mapping[train$thal]
+
+
 
