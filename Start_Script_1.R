@@ -262,5 +262,52 @@ mapping <- c("normal"=1, "fixed_defect"=2, "reversible_defect"=3)
 
 train$Thal_changed <- mapping[train$thal]
 
+train$Thal_changed <- as.factor(train$Thal_changed)
+
+# Apllying k-Nearest Neighbour Classification
+# We will break the "train" data into again training and testing
+
+# First remove the "thal" and "Thal_changed" variables
+
+train_k_nearest <- train[,c(2:17)]
+
+# Create normalized function for numeric data only
+
+train_k_normalized <- train_k_nearest %>% mutate_each_(list(~scale(.) %>% as.vector),
+                                                            vars = c("resting_blood_pressure","serum_cholesterol_mg_per_dl","oldpeak_eq_st_depression","age","max_heart_rate_achieved"))
+
+# Creating 90 % of data for training and rest for testing
+
+ran <- sample(1:nrow(train_k_normalized), 0.9 * nrow(train_k_normalized))
+
+# Generating training data
+
+k_train <- train_k_normalized[ran,]
+
+# Generating testing data
+
+k_test <- train_k_normalized[-ran,]
+
+# Generating category for both training and testing
+
+k_train_category <- train_k_normalized[ran,1]
+k_Test_category <- train_k_normalized[-ran,1]
+
+# Removing the target variable from k_train and k_test
+
+k_train$heart_disease_present <- NULL
+k_test$heart_disease_present <- NULL
+
+# Running k nearest neighbor
+
+library(class)
+
+pr <- knn(k_train,k_test,cl = k_train_category,k=13)
+
+tab <- table(pr,k_Test_category)
+
+accuracy <- function(x){sum(diag(x)/sum(rowSums(x)))*100}
+
+accuracy(tab)
 
 
