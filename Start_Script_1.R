@@ -314,4 +314,33 @@ accuracy <- function(x){sum(diag(x)/sum(rowSums(x)))*100}
 
 accuracy(tab)
 
+# Tessting the k nearest neighbor on test data
+# First treating the test values with same methods as train
+
+# Converting integer to factor where needed
+
+test_values$fasting_blood_sugar_gt_120_mg_per_dl <- as.factor(test_values$fasting_blood_sugar_gt_120_mg_per_dl)
+test_values$sex <- as.factor(test_values$sex)
+test_values$exercise_induced_angina <- as.factor(test_values$exercise_induced_angina)
+
+ # changing "thal" to dummy variables by one hot coding
+
+test_values_1 <- dummy.data.frame(test_values,names = c('thal'),sep="_")
+
+test_values <- test_values_1
+
+# Removing patient_id
+
+test_values <- test_values[,c(2:16)]
+
+# normalizing the columns in test_values df
+
+test_values_normalized <- test_values %>% mutate_each_(list(~scale(.) %>% as.vector),
+                                                       vars = c("resting_blood_pressure","serum_cholesterol_mg_per_dl","oldpeak_eq_st_depression","age","max_heart_rate_achieved"))
+
+# Running the k nearest neighbor on true test values
+
+pr <- knn(k_train,test_values_normalized,cl = k_train_category,k=20)
+
+# Not sure if we can use K nearest neighbor since "log loss" is not available in kNN
 
