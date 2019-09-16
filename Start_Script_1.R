@@ -381,6 +381,16 @@ glm.pred <- ifelse(glm.probs>0.5,1,0)
 
 table(glm.pred,log_test[,1])
 
+# using AIC to select the most important model
+
+glm.fit.step <- glm(heart_disease_present ~ . , data = log_train, family = binomial)
+
+glm.fit.step.1 <- step(glm.fit.step)
+
+summary(glm.fit.step.1)
+
+glm.fit.step.1$anova
+
 
 
 
