@@ -10,6 +10,10 @@ library(GGally)
 library(rpart)
 library(rpart.plot)
 
+# For correlation plot
+
+library(corrplot)
+
 
 # Get Test Values using data.table
 
@@ -343,4 +347,49 @@ test_values_normalized <- test_values %>% mutate_each_(list(~scale(.) %>% as.vec
 pr <- knn(k_train,test_values_normalized,cl = k_train_category,k=20)
 
 # Not sure if we can use K nearest neighbor since "log loss" is not available in kNN
+
+# Using logistic regression again with normalized variable
+# we will use the "train_k_normalized" data
+
+# Getting correlation plot (only for numerical variables)
+
+correlation <- cor(train_k_normalized[,c(names(dplyr::select_if(train_k_normalized,is.numeric)))])
+
+corrplot(correlation,method = "circle")
+
+# Creating train and test dataset
+
+log_train <- train_k_normalized[ran,]
+
+log_test <- train_k_normalized[-ran,]
+
+# first tiny model
+
+glm.fit <- glm(heart_disease_present ~ slope_of_peak_exercise_st_segment + age + sex  , data = log_train, family = binomial)
+
+# look at the summary
+
+summary(glm.fit)
+
+# predict on the test data
+
+glm.probs <- predict(glm.fit, newdata = log_test[,2:16], type = "response")
+
+# convert to 0 and 1 to see the accuracy
+
+glm.pred <- ifelse(glm.probs>0.5,1,0)
+
+table(glm.pred,log_test[,1])
+
+
+
+
+
+
+
+
+
+
+
+
 
