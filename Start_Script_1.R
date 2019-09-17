@@ -15,6 +15,11 @@ library(rpart.plot)
 
 library(corrplot)
 
+# For running k nearest neighbor
+
+library(class)
+
+
 
 # Get Test Values using data.table
 
@@ -305,7 +310,7 @@ k_test$heart_disease_present <- NULL
 
 # Running k nearest neighbor
 
-library(class)
+
 
 # K as 13 is approximate square root of 162 i.e. the number of obs in training data
 
@@ -376,6 +381,7 @@ summary(glm.fit)
 
 glm.probs <- predict(glm.fit, newdata = log_test[,2:16], type = "response")
 
+
 # convert to 0 and 1 to see the accuracy
 
 glm.pred <- ifelse(glm.probs>0.5,1,0)
@@ -392,12 +398,9 @@ summary(glm.fit.step.1)
 
 glm.fit.step.1$anova
 
+head(train)
 
-
-
-
-
-
+# The code below is used for Submission 1
 
 
 
