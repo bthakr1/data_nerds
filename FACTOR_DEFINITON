@@ -49,4 +49,26 @@ Target heart rate while resting is between 60 and 100 beats/min.
 10. sex (type: binary): 0: female, 1: male
 11. age (type: int): age in years
 12. max_heart_rate_achieved (type: int): maximum heart rate achieved (beats per minute)
+
+Webpage useful for optimal maximum heart rate during exercise when no heart disease present:
+https://www.newhealthadvisor.org/Normal-Heart-Rate-Chart.html
+
+It provides this quick table (I reconstructed it with R Code because it pastes badly!):
+Age = c(20, 30, 35, 40, 45, 50)
+MaxHR = c(200, 190, 185, 180, 175, 170)
+TargHR = c("100-170", "95-162", "93-157", "90-153", "88-149", "85-145")
+tableHR <- data.frame(Age, MaxHR, TargHR)
+  Age MaxHR  TargHR
+1  20   200 100-170
+2  30   190  95-162
+3  35   185  93-157
+4  40   180  90-153
+5  45   175  88-149
+6  50   170  85-145
+
+Training data runs from 29-77. We could us max heart rate between 85 and 162. (If we tried to extrapolate, 
+decreasing heart rate lower/upper bounds by 2 or3 on lower end and 4 on upper end, we would get a range of 
+70-121 for age 80. Don't think we should do that, but open to ideas). Now we could create a binary variable 
+for normal max heart rate or not for each patient (or use the by age ranges above).
+
 13. exercise_induced_angina (type: binary): exercise-induced chest pain (0: False, 1: True)
