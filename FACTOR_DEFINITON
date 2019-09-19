@@ -47,6 +47,9 @@ Target heart rate while resting is between 60 and 100 beats/min.
 8. serum_cholesterol_mg_per_dl (type: int): serum cholestoral in mg/dl
 9. oldpeak_eq_st_depression (type: float): oldpeak = ST depression induced by exercise relative to rest, a measure of abnormality in electrocardiograms
 10. sex (type: binary): 0: female, 1: male
+
+From Rahul's graphs, looks like a greater proportion of men tend to have heart disease than do women.
+
 11. age (type: int): age in years
 12. max_heart_rate_achieved (type: int): maximum heart rate achieved (beats per minute)
 
