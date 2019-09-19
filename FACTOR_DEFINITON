@@ -34,9 +34,15 @@ in most cases, you won’t require any further testing.
 c. Reversible Defect
 
 3. resting_blood_pressure (type: int): resting blood pressure
+
+Optimal typically defined as 120 mmHg systolic (pressure as heart beats) over 80 mm HG diastolic (pressure as heart relaxes).
+Target heart rate while resting is between 60 and 100 beats/min.
+
 4. chest_pain_type (type: int): chest pain type (4 values)
 5. num_major_vessels (type: int): number of major vessels (0-3) colored by flourosopy
 6. fasting_blood_sugar_gt_120_mg_per_dl (type: binary): fasting blood sugar > 120 mg/dl
+
+
 7. resting_ekg_results (type: int): resting electrocardiographic results (values 0,1,2)
 8. serum_cholesterol_mg_per_dl (type: int): serum cholestoral in mg/dl
 9. oldpeak_eq_st_depression (type: float): oldpeak = ST depression induced by exercise relative to rest, a measure of abnormality in electrocardiograms
