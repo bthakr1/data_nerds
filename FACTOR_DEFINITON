@@ -27,19 +27,27 @@ heart, a special camera called a gamma camera can detect the radiation and revea
 
 We have 3 levels of Thallium Strees Test.
 
-a. Fixed Defect
+a. Fixed Defect: A "fixed defect" implies scar (ie prior heart attack with subsequent damage)
 b. Normal : A normal test result indicates there is sufficient and unrestricted blood flow to your heart, 
 both during periods of rest and exercise. Generally, there’s little concern for coronary artery disease and, 
 in most cases, you won’t require any further testing.
-c. Reversible Defect
+c. Reversible Defect: Implies ischemia (lack of blood to heart). Could be conisdered positive for coronary disease
 
 3. resting_blood_pressure (type: int): resting blood pressure
 4. chest_pain_type (type: int): chest pain type (4 values)
 5. num_major_vessels (type: int): number of major vessels (0-3) colored by flourosopy
+
+There are three major arteries leading to the heart. Those colored by flouroscopy may be indicating blockages to the heart
+and may be associated with heart disease.
+
 6. fasting_blood_sugar_gt_120_mg_per_dl (type: binary): fasting blood sugar > 120 mg/dl
 7. resting_ekg_results (type: int): resting electrocardiographic results (values 0,1,2)
 8. serum_cholesterol_mg_per_dl (type: int): serum cholestoral in mg/dl
 9. oldpeak_eq_st_depression (type: float): oldpeak = ST depression induced by exercise relative to rest, a measure of abnormality in electrocardiograms
+
+During exercise, the greater the ST segment depression (on ekg) could be indicative of limiting blood flow and, potentially,
+coronary heart disease.
+
 10. sex (type: binary): 0: female, 1: male
 11. age (type: int): age in years
 12. max_heart_rate_achieved (type: int): maximum heart rate achieved (beats per minute)
