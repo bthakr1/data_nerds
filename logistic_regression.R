@@ -140,6 +140,10 @@ test_values_1 <- as.data.frame(test_values[,1])
 
 prediction_made <- cbind(test_values_1,log_glm_pred)
 
+# adding interaction effect of oldpeak and chest pain to log_model
 
+log_model2<-glm(heart_disease_present~exercise_induced_angina+sex+thal_changed+chest_pain_type+oldpeak_eq_st_depression+num_major_vessels+exercise_induced_angina:oldpeak_eq_st_depression+thal_changed:chest_pain_type+chest_pain_type:oldpeak_eq_st_depression,train,family = "binomial")
+step(log_model2)
+summary(log_model2)
 
 
