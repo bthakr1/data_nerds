@@ -146,4 +146,7 @@ log_model2<-glm(heart_disease_present~exercise_induced_angina+sex+thal_changed+c
 step(log_model2)
 summary(log_model2)
 
+# new model after step run on log_model2. This one has lowest AIC I think (about 143)
 
+log_model3<-glm(heart_disease_present~sex+thal_changed+exercise_induced_angina:oldpeak_eq_st_depression+chest_pain_type+num_major_vessels,train,family = "binomial")
+summary(log_model3)
